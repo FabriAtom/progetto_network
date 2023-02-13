@@ -14,9 +14,11 @@ class PageController extends Controller
      */
     public function index()
     {
-        // $artists = Artist::all();
+        // recuperiamo gli artisti
+        $artists = Artist::all();
 
-        return view('home');
+        // ritorniamo la vista home passandogli i dati
+        return view('home', compact('artists'));
     }
 
     /**
