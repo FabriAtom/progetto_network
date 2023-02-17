@@ -61,8 +61,7 @@ class CompanySeeder extends Seeder
             $newCompany->description = $company['description'];
             $newCompany->type = $company['type'];
 
-            $newCompany->save();
-            
+            $newCompany->save();    
         }
     }
 }

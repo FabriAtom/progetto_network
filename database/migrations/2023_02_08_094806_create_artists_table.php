@@ -17,10 +17,10 @@ class CreateArtistsTable extends Migration
             $table->id();
             $table->string('name',100);
             $table->string('surname',255);
-            $table->string('nickname',100);
+            $table->string('nickname',100)->nullable();
             $table->string('address',255);
             $table->string('category',100);
-            $table->string('email')->unique();
+            $table->string('email',100)->unique();
             $table->string('image')->nullable();
             $table->string('phone',50);
             $table->string('cv')->nullable();

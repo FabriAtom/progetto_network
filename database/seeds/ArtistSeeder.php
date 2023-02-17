@@ -64,7 +64,6 @@ class ArtistSeeder extends Seeder
             $newArtist->cv = $artist['cv'];
 
             $newArtist->save();
-
         }
     }
 }
