@@ -19,6 +19,16 @@ route::get('/', function() {
 
 route::resource('artists','ArtistController');
 
-// Auth::routes();
+Auth::routes();
 
-// Route::get('/home', 'HomeController@index')->name('home');
+Route::middleware('auth')
+    ->namespace('Admin')
+    ->name('admin.')
+    ->prefix('admin')
+    ->group(
+        function () {
+            // rotta dashboard
+            Route::get('/home', 'HomeController@index')->name('home');
+            Route::resource('posts', 'PostController');
+        }
+    );

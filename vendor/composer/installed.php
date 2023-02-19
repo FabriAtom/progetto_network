@@ -1,9 +1,9 @@
 <?php return array(
     'root' => array(
         'name' => 'laravel/laravel',
-        'pretty_version' => 'dev-main',
-        'version' => 'dev-main',
-        'reference' => '31893a38c967ae6a065d17a28992f96fd6c41af3',
+        'pretty_version' => 'dev-develop',
+        'version' => 'dev-develop',
+        'reference' => 'c60ae5ea6adf363ddd128f160fcced48609ea5c7',
         'type' => 'project',
         'install_path' => __DIR__ . '/../../',
         'aliases' => array(),
@@ -112,6 +112,15 @@
             'aliases' => array(),
             'dev_requirement' => true,
         ),
+        'fakerphp/faker' => array(
+            'pretty_version' => 'v1.21.0',
+            'version' => '1.21.0.0',
+            'reference' => '92efad6a967f0b79c499705c69b662f738cc9e4d',
+            'type' => 'library',
+            'install_path' => __DIR__ . '/../fakerphp/faker',
+            'aliases' => array(),
+            'dev_requirement' => false,
+        ),
         'fideloper/proxy' => array(
             'pretty_version' => '4.4.2',
             'version' => '4.4.2.0',
@@ -138,15 +147,6 @@
             'install_path' => __DIR__ . '/../fruitcake/laravel-cors',
             'aliases' => array(),
             'dev_requirement' => false,
-        ),
-        'fzaninotto/faker' => array(
-            'pretty_version' => 'v1.9.2',
-            'version' => '1.9.2.0',
-            'reference' => '848d8125239d7dbf8ab25cb7f054f1a630e68c2e',
-            'type' => 'library',
-            'install_path' => __DIR__ . '/../fzaninotto/faker',
-            'aliases' => array(),
-            'dev_requirement' => true,
         ),
         'guzzlehttp/guzzle' => array(
             'pretty_version' => '6.5.8',
@@ -374,9 +374,9 @@
             'dev_requirement' => false,
         ),
         'laravel/laravel' => array(
-            'pretty_version' => 'dev-main',
-            'version' => 'dev-main',
-            'reference' => '31893a38c967ae6a065d17a28992f96fd6c41af3',
+            'pretty_version' => 'dev-develop',
+            'version' => 'dev-develop',
+            'reference' => 'c60ae5ea6adf363ddd128f160fcced48609ea5c7',
             'type' => 'project',
             'install_path' => __DIR__ . '/../../',
             'aliases' => array(),

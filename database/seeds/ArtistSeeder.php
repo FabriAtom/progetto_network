@@ -15,7 +15,6 @@ class ArtistSeeder extends Seeder
     {
         
         $artists = [
-
             [
                 'name' => 'Franco',
                 'surname' => 'Rossi',

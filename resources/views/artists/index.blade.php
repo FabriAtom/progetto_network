@@ -51,7 +51,7 @@
              <div class="col">
               <a href="{{ route('artists.show', $artist) }}" style="text-decoration: none;">
       
-                  <div class="card mb-5 text-center border-dark" style="height: 450px; background:rgba(100, 180, 180, 0.6)"> 
+                  <div class="card mb-5 text-center border-dark" style="height: 550px; background:rgba(10, 100, 110, 0.4)"> 
                     @if ($artist->image)
                     <div class="card-img-top justify-content-center">
                       <img class="card-img-top " style="width: 16rem; height: 170px; margin-top: 14px" src="{{ asset('Storage/' . $artist->image) }}" alt="immagine {{ $artist->name }}">                               
@@ -68,12 +68,19 @@
                     <div class="card-body text-dark">
                       <h2 class="card-title text-dark">{{ $artist->name }} {{ $artist->surname }}</h2>
                       <hr> 
-                     
                       <p><strong> Nome d'Arte: </strong>  {{ $artist->nickname }} </p>
                       <p><strong>Categoria Artistica: </strong> {{ $artist->category }}</p>
                       <p><strong>Indirizzo: </strong> {{ $artist->address }}</p>
                       <p><strong>Cell: </strong> {{ $artist->phone }}</p>
-                    </div>  
+                      <p><strong><a style="text-decoration: none" href="{{ route('artists.edit', $artist) }}">Modifica</a></strong></p>
+                      <p><strong>
+                        <form action="{{ route('artists.destroy',$artist) }}" method="POST">
+                        @csrf
+                        @method('DELETE')
+                        <input type="submit" value="Elimina">
+                        </form>
+                      </strong></p>
+                    </div>
                   </div>
                 </a> 
              </div>

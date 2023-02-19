@@ -63,13 +63,13 @@ class ArtistController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  int  $id
+     * @param  \App\Artist  $artist
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show(Artist $artist)
     {
         // metodo find, id non valido return pagina 404
-        $artist = Artist::findOrFail($id);
+        // $artist = Artist::findOrFail($id);
 
         return view('artists.show', compact('artist'));
     }
@@ -82,29 +82,52 @@ class ArtistController extends Controller
      */
     public function edit($id)
     {
-        //
+        $artist = Artist::findOrFail($id);
+        // dd($artist);
+
+        return view('artists.edit', compact('artist'));
     }
 
     /**
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
+     * @param  \App\Artist  $artist
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request, Artist $artist)
     {
-        //
+        // dd($request->all());
+        // $artist = Artist::findOrFail($id);
+
+        $params = $request->validate([
+            'name' => 'required|max:100',
+            'surname' => 'required|max:255',
+            'email' => 'required|max:100|email',
+            'address' => 'required|max:255',
+            'category' => 'required|max:100',
+            'phone' => 'required|max:50',
+            'image' => 'nullable',
+            'cv' => 'nullable'
+        ]);
+
+        $artist->update($params);
+
+        return redirect()->route('artists.show', $artist);
     }
 
     /**
      * Remove the specified resource from storage.
      *
-     * @param  int  $id
+     * @param  \App\Artist  $artist
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(Artist $artist)
     {
-        //
+        // $artist = Artist::findOrFail($id);
+
+        $artist->delete();
+        
+        return redirect()->route('artists.index');
     }
 }
