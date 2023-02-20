@@ -33,15 +33,15 @@
             {{$artist->phone}}
           </p>
           <div>
-            <div class="container">
+            {{-- <div class="container">
                 <a href="{{ route('artists.edit',$artist) }}">Modifica Profilo</a>
                 {{-- form elimina --}}
-                <form action="{{ route('artists.destroy',$artist) }}" method="POST">
+                {{-- <form action="{{ route('artists.destroy',$artist) }}" method="POST">
                     @csrf
                     @method('DELETE')
                     <input type="submit" value="Elimina">
                 </form>
-              </div>
+              </div> --}} 
           </div>
         </div>
       </div>

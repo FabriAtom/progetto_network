@@ -3,11 +3,11 @@
 @section('content')
 
 {{-- CREATE --}}
-<section>
+{{-- <section>
     <div class="container" style="display:flex; justify-content:flex-end;" >
         <a style="text-decoration: none;" href=" {{ route('artists.create') }}">Aggiungi Artista</a>
     </div>
-</section>
+</section> --}}
 
 
 {{-- <ul>
@@ -26,8 +26,8 @@
 
 
 <section>
-    <div class="Info text-center">
-        <p><Strong>KGPARTNERS</Strong>, Siamo la tua piattaforma numero 1 di ricerca Artisti in tutta Italia.
+     <div class="Info text-center">
+        <p class="mt-4"><Strong>KGPARTNERS</Strong>, Siamo la tua piattaforma numero 1 di ricerca Artisti in tutta Italia.
           Qui trovi tutto ciò di cui hai bisogno, ti basta cercare!</p>
         <hr class="my-4">
       </div>
@@ -72,14 +72,14 @@
                       <p><strong>Categoria Artistica: </strong> {{ $artist->category }}</p>
                       <p><strong>Indirizzo: </strong> {{ $artist->address }}</p>
                       <p><strong>Cell: </strong> {{ $artist->phone }}</p>
-                      <p><strong><a style="text-decoration: none" href="{{ route('artists.edit', $artist) }}">Modifica</a></strong></p>
-                      <p><strong>
+                      {{-- <p><strong><a style="text-decoration: none" href="{{ route('artists.edit', $artist) }}">Modifica</a></strong></p> --}}
+                      {{-- <p><strong>
                         <form action="{{ route('artists.destroy',$artist) }}" method="POST">
                         @csrf
                         @method('DELETE')
                         <input type="submit" value="Elimina">
                         </form>
-                      </strong></p>
+                      </strong></p> --}}
                     </div>
                   </div>
                 </a> 
