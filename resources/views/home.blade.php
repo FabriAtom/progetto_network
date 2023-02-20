@@ -2,11 +2,9 @@
 
 @section('content')
 
-    <div class="container">
+    {{-- <div class="container">
         <h1>Benvenuti nella nostra Piattaforma!</h1>
-    </div>
-
-
+    </div> --}}
     <section>
         <div id="carouselExampleFade" class="carousel slide carousel-fade" data-bs-ride="carousel">
             <div class="carousel-inner">

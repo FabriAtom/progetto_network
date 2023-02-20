@@ -19,6 +19,7 @@ route::get('/', function() {
 
 route::resource('artists','ArtistController');
 
+
 Auth::routes();
 
 Route::middleware('auth')
