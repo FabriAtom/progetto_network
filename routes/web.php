@@ -17,7 +17,8 @@ route::get('/', function() {
     return view('home');
 })->name('homepage');
 
-route::resource('artists','ArtistController');
+
+Route::get('/guesthome', 'GuestController@index')->name('index');
 
 
 Auth::routes();
@@ -31,5 +32,6 @@ Route::middleware('auth')
             // rotta dashboard
             Route::get('/home', 'HomeController@index')->name('home');
             Route::resource('posts', 'PostController');
+            route::resource('artists','ArtistController');
         }
     );

@@ -10,7 +10,7 @@
     </div>
 
     <div class="container">
-        <form action="{{ route('artists.update', $artist) }}" method="POST">
+        <form action="{{ route('admin.artists.update', $artist) }}" method="POST">
             @csrf
             @method('PUT')
 

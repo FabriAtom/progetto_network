@@ -15,6 +15,8 @@ class CreatePostsTable extends Migration
     {
         Schema::create('posts', function (Blueprint $table) {
             $table->id();
+            // $table->unsignedBigInteger('artist_id');
+            // $table->foreign('artist_id')->references('id')->on('artists')->onDelete('cascade');
             $table->string('title');
             $table->text('content');
             $table->string('slug')->unique();
@@ -29,6 +31,7 @@ class CreatePostsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('posts');
+         Schema::dropIfExists('posts');
+    
     }
 }

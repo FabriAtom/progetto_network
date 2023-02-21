@@ -1,9 +1,11 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Admin;
 
 use App\Artist;
 use Illuminate\Http\Request;
+use App\Http\Controllers\Controller;
+
 
 class ArtistController extends Controller
 {
@@ -18,7 +20,7 @@ class ArtistController extends Controller
         $artists = Artist::all();
 
         // ritorniamo la vista index passandogli i dati
-        return view('artists.index', compact('artists'));
+        return view('admin.artists.index', compact('artists'));
     }
 
     /**
@@ -28,7 +30,7 @@ class ArtistController extends Controller
      */
     public function create()
     {
-        return view('artists.create');
+        return view('admin.artists.create');
     }
 
     /**
@@ -57,7 +59,7 @@ class ArtistController extends Controller
         $artist = Artist::create($params);
 
         // passiamo il model, recupera la PK e la usa come parametro
-        return redirect()->route('artists.show', $artist);
+        return redirect()->route('admin.artists.show', $artist);
     }
 
     /**
@@ -71,7 +73,7 @@ class ArtistController extends Controller
         // metodo find, id non valido return pagina 404
         // $artist = Artist::findOrFail($id);
 
-        return view('artists.show', compact('artist'));
+        return view('admin.artists.show', compact('artist'));
     }
 
     /**
@@ -85,7 +87,7 @@ class ArtistController extends Controller
         $artist = Artist::findOrFail($id);
         // dd($artist);
 
-        return view('artists.edit', compact('artist'));
+        return view('admin.artists.edit', compact('artist'));
     }
 
     /**
@@ -113,7 +115,7 @@ class ArtistController extends Controller
 
         $artist->update($params);
 
-        return redirect()->route('artists.show', $artist);
+        return redirect()->route('admin.artists.show', $artist);
     }
 
     /**
@@ -128,6 +130,6 @@ class ArtistController extends Controller
 
         $artist->delete();
         
-        return redirect()->route('artists.index');
+        return redirect()->route('admin.artists.index');
     }
 }

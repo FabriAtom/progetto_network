@@ -49,7 +49,7 @@
           <div class="row">
             @foreach ($artists as $artist)
              <div class="col">
-              <a href="{{ route('artists.show', $artist) }}" style="text-decoration: none;">
+              <a href="{{ route('admin.artists.show', $artist) }}" style="text-decoration: none;">
       
                   <div class="card mb-5 text-center border-dark" style="height: 550px; background:rgba(10, 100, 110, 0.4)"> 
                     @if ($artist->image)

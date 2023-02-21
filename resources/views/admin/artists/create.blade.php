@@ -10,7 +10,7 @@
     </div>
 
     <div class="container">
-        <form action="{{ route('artists.store') }}" method="POST">
+        <form action="{{ route('admin.artists.store') }}" method="POST">
             @csrf
             <p>
                 <label for="name">Nome</label>

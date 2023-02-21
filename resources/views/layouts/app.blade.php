@@ -40,7 +40,7 @@
                                 @endif
                             @else
                                 <li class="nav-item">
-                                    <a class="nav-link" href="{{ route('admin.posts.index') }}">Articoli</a>
+                                    <a class="nav-link" href="{{ route('admin.posts.index') }}">Opere</a>
                                 </li>
 
                                 <li class="nav-item dropdown">
@@ -73,9 +73,9 @@
                                 <a class="nav-link" href="#">Blog</a>
                             </li> --}}
                             <li class="nav-item">
-                                <a class="nav-link" href="{{ route('artists.index') }}">Artisti</a>
+                                <a class="nav-link" href="{{ route('admin.artists.index') }}">Artisti</a>
                             </li>
-                            <li class="nav-item dropdown">
+                            {{-- <li class="nav-item dropdown">
                                 <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                                     Login
                                 </a>
@@ -88,7 +88,7 @@
                                     <li><hr class="dropdown-divider"></li>
                                     <li><a class="dropdown-item" href="#">Login Acquisto</a></li>
                                 </ul>
-                            </li>
+                            </li> --}}
                             {{-- <form class="d-flex">
                                 <input class="form-control me-2" type="search" placeholder="Cerca" aria-label="Search">
                                 <button class="btn btn-outline-success" type="submit">Cerca</button>

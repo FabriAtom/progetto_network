@@ -11,4 +11,8 @@ class Post extends Model
         'content',
         'slug'
     ];
+
+    public function artist(){
+        return $this->belongsTo('App\Artist');
+    }
 }
