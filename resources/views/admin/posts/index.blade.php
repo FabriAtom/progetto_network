@@ -8,10 +8,10 @@
 <div class="container-fluid">
     <div class="row">
         <div class="col-8">
-            <h1>Elenco di Opere:</h1>
+            <h1>Le mie Opere:</h1>
         </div>
         <div class="col-4  text-left d-flex justify-content-end align-items-center">
-            <a href="{{ route('admin.posts.create') }}" type="button" class="btn btn-primary btn-sm">Nuovo Post</a>
+            <a href="{{ route('admin.posts.create') }}" type="button" class="btn btn-primary btn-sm">Aggiungi Post</a>
         </div>
     </div>
  </div>

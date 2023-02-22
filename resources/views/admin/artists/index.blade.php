@@ -25,19 +25,19 @@
 </ul> --}}
 
 
-<section>
+{{-- <section>
      <div class="Info text-center">
         <p class="mt-4"><Strong>KGPARTNERS</Strong>, Siamo la tua piattaforma numero 1 di ricerca Artisti in tutta Italia.
           Qui trovi tutto ciò di cui hai bisogno, ti basta cercare!</p>
         <hr class="my-4">
       </div>
       
-      <div class="container-fluid">
-          <div class="row">
-            <div class="col-8">
-              <h1 class="py-5">Consulta gli Artisti!</h1>
+        <div class="container-fluid">
+            <div class="row">
+              <div class="col-8">
+                <h1 class="py-5">Consulta gli Artisti!</h1>
+              </div>
             </div>
-          </div>
         </div>
         
         <div class="container-fluid">
@@ -79,7 +79,7 @@
                         @method('DELETE')
                         <input type="submit" value="Elimina">
                         </form>
-                      </strong></p> --}}
+                      </strong></p> 
                     </div>
                   </div>
                 </a> 
@@ -87,6 +87,6 @@
             @endforeach
           </div>
         </div>
-</section>
+</section> --}}
 
 @endsection
