@@ -2,6 +2,7 @@
 
 namespace App;
 
+use App\Category;
 use Illuminate\Database\Eloquent\Model;
 
 class Post extends Model
@@ -9,10 +10,14 @@ class Post extends Model
     protected $fillable = [
         'title',
         'content',
-        'slug'
+        'slug',
+        'category_id'
     ];
 
-    public function artist(){
-        return $this->belongsTo('App\Artist');
+    public function category() 
+    {
+        // il post appartiene a uan categoria
+        return $this->belongsTo('App\Category');
+        // return $this->belongsTo('App\Category','category_id','id');
     }
 }
