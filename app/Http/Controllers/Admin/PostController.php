@@ -51,24 +51,24 @@ class PostController extends Controller
         // piccolo algoritmo che andrà a trovarsi in maniera itereattiva un nuovo slug utilizzando un contatore finche non troverà un post
 
         // dd($request->all());
-        $slug_base = Str::slug($params['title']);
-        $slug =  $slug_base;
+        // $slug_base = Str::slug($params['title']);
+        // $slug =  $slug_base;
 
-        // controllare che sia unico 
-        $post_esistente = Post::where('slug', $slug)->first();
-        $counter = 1;
+        // // controllare che sia unico 
+        // $post_esistente = Post::where('slug', $slug)->first();
+        // $counter = 1;
 
-        while ($post_esistente) {
+        // while ($post_esistente) {
 
-            $slug = $slug_base . '-' . $counter;
+        //     $slug = $slug_base . '-' . $counter;
             
-            $post_esistente = Post::where('slug', $slug)->first();
-            $counter++;
-        };
+        //     $post_esistente = Post::where('slug', $slug)->first();
+        //     $counter++;
+        // };
 
         // dd($slug);
         
-        $params['slug'] = $slug;
+        $params['slug'] = Post::getUniqueSlugFrom($params['title']);;
 
         $post = Post::create($params);
 
@@ -118,29 +118,26 @@ class PostController extends Controller
             'category_id' => 'required|exists:categories,id'
         ]);
 
-
-
-    //     if($params['title'] =! $post->title) {
-    //         // rigenerare lo slug
-    //         $slug_base = Str::slug($params['title']);
-    //         $slug = $slug_base;
-    //         $post_esistente = Post::where('slug', $slug)->first();
-    //         $counter = 1;
+        if($params['title'] !== $post->title) {
+            // rigenerare lo slug
+            // $slug_base = Str::slug($params['title']);
+            // $slug = $slug_base;
+            // $post_esistente = Post::where('slug', $slug)->first();
+            // $counter = 1;
     
-    //         while ($post_esistente) {
+            // while ($post_esistente) {
     
-    //             $slug = $slug_base . '-' . $counter;
+            //     $slug = $slug_base . '-' . $counter;
                 
-    //             $post_esistente = Post::where('slug', $slug)->first();
-    //             $counter++;
-    //         }
+            //     $post_esistente = Post::where('slug', $slug)->first();
+            //     $counter++;
+            // }
+            $params['slug'] = Post::getUniqueSlugFrom($params['title']);
+        }
 
-    //         $params['slug'] = $slug;
-    //     }
+        $post->update($params);
 
-    //     $post->update($params);
-
-    //      return redirect()->route('admin.posts.show',$post);
+         return redirect()->route('admin.posts.show',$post);
         
      }
 
