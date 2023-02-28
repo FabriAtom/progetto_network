@@ -17,26 +17,69 @@ class PostSeeder extends Seeder
      */
     public function run(Faker $faker)
     {
-        // recupero categorie dal database
-        // metodo pulck genera array vuoto, recupera colonna id e pusha in array
+
+        $users = User::all()->pluck('id');
         $categoryIds = Category::All()->pluck('id');
         $userIds = User::All()->pluck('id');
 
+        foreach($users as $user_id) {
+            
+            for ($i=0; $i < 50; $i++) { 
+                $post = new Post();
+                $post->user_id = $user_id;
+                $post->title = $faker->words( rand(1,3), true );
+                $post->image = $faker->image();
+                $post->content = $faker->paragraphs( rand(1,2), true );
+                $post->slug = Str::slug($post->title);
+                $post->category_id = $faker->randomElement($categoryIds);
+                // $post->user_id = $user;
+                $post->user_id = $faker->randomElement($userIds);
+
+                $post->save();
+            }
+        }
+
+
+
+        // recupero categorie dal database
+        // metodo pulck genera array vuoto, recupera colonna id e pusha in array
         // $user = User::All()->pluck('id');
 
-        for ($i=0; $i < 50; $i++) { 
-            $post = new Post();
-            $post->title = $faker->words( rand(1,3), true );
-            $post->image = $faker->image();
-            $post->content = $faker->paragraphs( rand(2,5), true );
-            $post->slug = Str::slug($post->title);
-            $post->category_id = $faker->randomElement($categoryIds);
-            // $post->user_id = $user;
-            $post->user_id = $faker->randomElement($userIds);
+        // for ($i=0; $i < 50; $i++) { 
+        //     $post = new Post();
+        //     $post->title = $faker->words( rand(1,3), true );
+        //     $post->image = $faker->image();
+        //     $post->content = $faker->paragraphs( rand(1,2), true );
+        //     $post->slug = Str::slug($post->title);
+        //     $post->category_id = $faker->randomElement($categoryIds);
+        //     // $post->user_id = $user;
+        //     $post->user_id = $faker->randomElement($userIds);
 
 
 
-            $post->save();
-        }
+        //     $post->save();
+        // }
+
+        // $users = User::all();
+
+        // // cicliamo i profili 
+        // foreach($user as $users) {
+        // // per ogni profilo generiamo dei post(opere) random
+        //     $random = rand(1,5);
+
+        //     for ($i=0; $i < $random; $i++) {
+                
+                
+        //         $post = new Post();
+        //         $post->user_id = $user->id;
+        //         $post->title = $faker->randomTitle();
+        //         $post->image = $faker->image(null, 640, 480);
+        //         $post->content = $faker->paragraphs( rand(1,2), true );
+        //         $post->slug = Str::slug($post->title);
+
+        //         $post->save();
+        //     }
+
+        // }
     }
 }

@@ -2,6 +2,7 @@
 
 use Illuminate\Database\Seeder;
 use App\User;
+use App\Post;
 use Illuminate\Support\Facades\Hash;
 use App\Category;
 use Faker\Generator as Faker;
@@ -45,6 +46,8 @@ class UserSeeder extends Seeder
             $new_artist->phone = $faker->phoneNumber();
 
             $new_artist->save();
+
+
         }
     }
 }
