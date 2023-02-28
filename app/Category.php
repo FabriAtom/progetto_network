@@ -7,11 +7,16 @@ use App\Post;
 
 class Category extends Model
 {
+    protected $fillable = [
+        'categories'
+    ];
     
     public function posts() 
     {
         // relazione diretta, tabella indipendente e post tabella dipendendente, una categoria ha molti post
-        return $this->hasMany('App\Post');
+        // return $this->hasMany('App\Post');
+        return $this->belongsToMany('App\Post');
+
 
 
         // versione estesa

@@ -2,8 +2,10 @@
 
 namespace App\Http\Controllers;
 
+use App\User;
+use App\Category;
 use Illuminate\Http\Request;
-use App\Artist;
+
 
 class GuestController extends Controller
 {
@@ -14,9 +16,11 @@ class GuestController extends Controller
      */
     public function index()
     {
-        $artist = Artist::orderBy('id', 'desc')->get();
+        $categories = Category::all();
+
+        $users = User::orderBy('id', 'desc')->get();
         
-        return view('admin.guest.index', compact($artist));
+        return view('admin.guest.index', compact('users','categories'));
       
     }
 
@@ -49,7 +53,9 @@ class GuestController extends Controller
      */
     public function show($id)
     {
-        return view('admin.guest.show');
+        $user = User::findOrFail($id);
+
+        return view('admin.guest.show', compact('user'));
     }
 
     /**

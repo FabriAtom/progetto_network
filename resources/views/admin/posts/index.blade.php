@@ -26,7 +26,7 @@
                         <th scope="col">#</th>
                         <th scope="col">Titolo</th>
                         <th scope="col">Categoria</th>
-                        <th scope="col">Contenuto</th>
+                        <th scope="col">Descrizione</th>
                         <th scope="col">slug</th>
                         <th scope="col">Creazione</th>
                         <th colspan="2"></th>

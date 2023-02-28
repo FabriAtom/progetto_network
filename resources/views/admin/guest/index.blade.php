@@ -29,7 +29,7 @@
       </div>
         @endif 
         <div class="row">
-          @foreach ($artists as $artist)
+          {{-- @foreach ($users as $user)
              <div class="col">
               <a href="{{ route('admin.artists.show', $artist) }}" style="text-decoration: none;">
       
@@ -66,7 +66,7 @@
                   </div>
                 </a> 
              </div>
-            @endforeach
+            {{-- @endforeach --}}
           {{-- @foreach ($artists as $artist)
           <div class="col">
               <a href="{{ route('admin.artists.show', $artist) }}" style="text-decoration: none;">

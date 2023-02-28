@@ -2,10 +2,10 @@
 
 namespace App\Http\Controllers\Admin;
 
-use App\Http\Controllers\Controller;
-use Illuminate\Http\Request;
-use App\Artist;
 use App\User;
+use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Http\Request;
 
 
 
@@ -29,6 +29,9 @@ class HomeController extends Controller
      */
     public function index() 
     {
-        return view('admin.home');
+        $artist = User::where('id', Auth::user()->id)->first();
+
+        $user = Auth::user();
+        return view('admin.home', compact('artist', 'user'));
     }
 }

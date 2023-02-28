@@ -13,7 +13,7 @@ class ArtistSeeder extends Seeder
      */
     public function run()
     {
-        
+
         $artists = [
             [
                 'name' => 'Franco',
@@ -50,6 +50,8 @@ class ArtistSeeder extends Seeder
             ],
         ];
         
+        // $usersIds = User::All()->pluck('id');
+
         foreach($artists as $artist) {
             $newArtist = new Artist();
             $newArtist->name = $artist['name'];

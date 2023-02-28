@@ -15,10 +15,11 @@ class CreatePostsTable extends Migration
     {
         Schema::create('posts', function (Blueprint $table) {
             $table->id();
-            // $table->unsignedBigInteger('artist_id');
-            // $table->foreign('artist_id')->references('id')->on('artists')->onDelete('cascade');
             $table->string('title');
+            // $table->unsignedBigInteger('category_id')->default()->after('id');
+            // $table->foreign('category_id')->references('id')->on('categories')->onDelete('cascade');
             $table->text('content');
+            $table->text('image');
             $table->string('slug')->unique();
             $table->timestamps();
         });

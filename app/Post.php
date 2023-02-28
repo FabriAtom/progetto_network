@@ -37,6 +37,13 @@ class Post extends Model
             $counter++;
         }
         return $slug;
+    }
 
+    public function user() {
+        return $this->belongsToMany('App\Category');
+    }
+
+    public function users() {
+        return $this->belongsTo('App\User');
     }
 }
