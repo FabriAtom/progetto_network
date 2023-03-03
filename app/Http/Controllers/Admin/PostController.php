@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Admin;
 use App\Category;
 use App\Http\Controllers\Controller;
 use App\Post;
+use App\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Str;
 
@@ -29,8 +30,9 @@ class PostController extends Controller
      */
     public function create()
     {
+        $users = User::orderBy('name', 'asc')->get();
         $categories = Category::orderBy('name','asc')->get();
-        return view('admin.posts.create', compact('categories'));
+        return view('admin.posts.create', compact('categories','users'));
     }
 
     /**
@@ -45,7 +47,11 @@ class PostController extends Controller
         $params = $request->validate([
             'title' => 'required|max:255|min:5',
             'content' => 'required',
-            'category_id' => 'required|exists:categories,id'
+            'image' => 'required|mimes:png,jpg,jpeg,svg|max:4096',
+            'slug' => 'required|max:255',
+            'category_id' => 'required|exists:categories,id',
+            'user_id' => 'required|exists:users,id'
+
         ]);
 
         // piccolo algoritmo che andrà a trovarsi in maniera itereattiva un nuovo slug utilizzando un contatore finche non troverà un post
@@ -115,7 +121,10 @@ class PostController extends Controller
         $params = $request->validate([
             'title' => 'required|max:255|min:5',
             'content' => 'required',
-            'category_id' => 'required|exists:categories,id'
+            'image' => 'required',
+            'slug' => 'required|max:255',
+            'category_id' => 'required|exists:categories,id',
+            'user_id' => 'required|exists:users,id'
         ]);
 
         if($params['title'] !== $post->title) {

@@ -19,7 +19,7 @@
             <form action="{{ route('admin.posts.store') }}" method="POST">
 
                 @csrf
-
+                
                 <div class="form-group">
                   <label for="title">Titolo</label>
                   <input type="text" class="form-control @error('title') is-invalid @enderror" id="title" value="{{ old('title') }}" name="title" aria-describedby="helpTitle" >
@@ -36,7 +36,7 @@
                   <select name="category_id" class="custom-select @error('category_id') is-invalid @enderror">
                     <option value=""></option>
                     @foreach($categories as $category)
-                    <option @if(old('category_id') === $category->id) selected @endif value="{{ $category->id }}"> {{ $category->name }} </option>
+                    <option value="{{ $category->id }}" @if(old('category_id') === $category->id) selected @endif> {{ $category->name }} </option>
                     @endforeach
                   </select>
 

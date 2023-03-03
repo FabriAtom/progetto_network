@@ -27,7 +27,8 @@
                         <th scope="col">Titolo</th>
                         <th scope="col">Categoria</th>
                         <th scope="col">Descrizione</th>
-                        <th scope="col">slug</th>
+                        <th scope="col">Img</th>
+                        <th scope="col">Slug</th>
                         <th scope="col">Creazione</th>
                         <th colspan="2"></th>
                     </tr>
@@ -37,13 +38,9 @@
                     <tr>
                         <th scope="row">{{ $post->id }}</th>
                         <td>{{ $post->title }}</td>
-
-
-                        {{-- <td>{{ $post->category ? $post->category->name : 'nessuna categoria' }}</td> --}}
-
                         <td>{{ $post->category->name }}</td>
-
                         <td>{{ $post->content }}</td>
+                        <td>{{ $post->image }}</td>
                         <td>{{ $post->slug }}</td>
                         <td>{{ $post->created_at }}</td>
                         <td>

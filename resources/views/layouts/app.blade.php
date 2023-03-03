@@ -65,9 +65,12 @@
                                         {{ Auth::user()->name }}
                                     </a>
 
-                                    <div class="dropdown-menu dropdown-menu-right menu-list show" aria-labelledby="navbarDropdown">
+                                    <div class="dropdown-menu dropdown-menu-right menu-list" aria-labelledby="navbarDropdown">
                                         <a class="dropdown-item" href="{{ route('admin.home') }}">
                                             Profilo
+                                        </a>
+                                        <a class="dropdown-item" href="{{ route('admin.posts.index') }}">
+                                            Opere
                                         </a>
                                         <a class="dropdown-item" href="{{ route('logout') }}"
                                             onclick="event.preventDefault();

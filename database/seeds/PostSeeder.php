@@ -24,7 +24,7 @@ class PostSeeder extends Seeder
 
         foreach($users as $user_id) {
             
-            for ($i=0; $i < 50; $i++) { 
+            for ($i=0; $i < 30; $i++) { 
                 $post = new Post();
                 $post->user_id = $user_id;
                 $post->title = $faker->words( rand(1,3), true );
@@ -38,6 +38,7 @@ class PostSeeder extends Seeder
                 $post->save();
             }
         }
+
 
 
 

@@ -11,8 +11,10 @@ class Post extends Model
     protected $fillable = [
         'title',
         'content',
+        'image',
         'slug',
-        'category_id'
+        'category_id',
+        'artist_id'
     ];
 
     public function category() 
@@ -39,11 +41,11 @@ class Post extends Model
         return $slug;
     }
 
-    public function user() {
-        return $this->belongsToMany('App\Category');
-    }
 
-    public function users() {
+    public function user() {
         return $this->belongsTo('App\User');
     }
+
+
+    
 }
