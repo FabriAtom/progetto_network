@@ -131,11 +131,11 @@ class UserController extends Controller
             'surname' => 'required|string|max:255',
             'address' => 'required|string|max:255',
             'email' => 'required|max:100|email',
-            'category' => 'required|array|min:1|max:50',
             'phone' => 'required|min:2',
             'image' => 'nullable|mimes:png,jpg,jpeg,svg|max:4096',
             'cv' => 'nullable|mimes:pdf|max:4096',
         ]);
+
         // if (array_key_exists('image', $data)) {
         //     if ($artist->image) {
         //         Storage::delete($artist->image);

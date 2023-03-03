@@ -20,6 +20,14 @@ route::get('/', function() {
 
 Route::get('/guesthome', 'GuestController@index')->name('index');
 
+// Route::get('/', function () {
+//     return view('guest.home');
+// })->name('guest.home');
+
+Route::get('/show/{id}', 'GuestController@show')->name('show');
+
+
+
 
 Auth::routes();
 
@@ -32,7 +40,6 @@ Route::middleware('auth')
             // rotta dashboard
             Route::get('/home', 'HomeController@index')->name('home');
             Route::resource('posts', 'PostController');
-            // route::resource('artists','ArtistController');
             Route::resource('users', 'UserController');
         }
     );
