@@ -45,6 +45,15 @@ class User extends Authenticatable
     public function posts(){
         return $this->hasMany('App\Post');
     }
+
+
+    // relazione messaggi e recensioni
+    // public function reviews(){
+    //     return $this->hasMany('App\Review');
+    // }
+    // public function messages(){
+    //     return $this->hasMany('App\Message');
+    // }
 }
 
 

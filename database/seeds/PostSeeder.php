@@ -25,17 +25,17 @@ class PostSeeder extends Seeder
         foreach($users as $user_id) {
             
             for ($i=0; $i < 30; $i++) { 
-                $post = new Post();
-                $post->user_id = $user_id;
-                $post->title = $faker->words( rand(1,3), true );
-                $post->image = $faker->image();
-                $post->content = $faker->paragraphs( rand(1,2), true );
-                $post->slug = Str::slug($post->title);
-                $post->category_id = $faker->randomElement($categoryIds);
+                $new_post = new Post();
+                $new_post->user_id = $user_id;
+                $new_post->title = $faker->words( rand(1,3), true );
+                $new_post->image = $faker->image();
+                $new_post->content = $faker->paragraphs( rand(1,2), true );
+                $new_post->slug = Str::slug($new_post->title);
+                $new_post->category_id = $faker->randomElement($categoryIds);
                 // $post->user_id = $user;
-                $post->user_id = $faker->randomElement($userIds);
+                $new_post->user_id = $faker->randomElement($userIds);
 
-                $post->save();
+                $new_post->save();
             }
         }
 

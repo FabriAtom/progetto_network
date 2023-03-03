@@ -66,11 +66,22 @@ class UserController extends Controller
                 'image' => 'nullable|mimes:png,jpg,jpeg,svg|max:4096',
                 'cv' => 'nullable|mimes:pdf|max:4096',
             ]);
-
+            // if (array_key_exists('phone', $data)) {
+            //     $artist->phone = $data['phone'];
+            // }
+            // if (array_key_exists('image', $data)) {
+            //     $img_path = Storage::disk('public')->put('images', $request->file('image'));
+            //     $data['image'] = $img_path;
+            //     $artist->image = $img_path;
+            // }
+            // if (array_key_exists('cv', $data)) {
+            //     $cv_path = Storage::disk('public')->put('cvs', $request->file('cv'));
+            //     $data['cv'] = $cv_path;
+            //     $artist->cv = $cv_path;
+            // }
         $artist->save();
         return redirect()->route('admin.home', $artist);
     }
-
     /**
      * Display the specified resource.
      *
@@ -79,7 +90,7 @@ class UserController extends Controller
      */
     public function show(User $user)
     {
-        return view('admin.users.show');
+        // return view('admin.users.show');
     }
 
     /**
@@ -120,11 +131,27 @@ class UserController extends Controller
             'surname' => 'required|string|max:255',
             'address' => 'required|string|max:255',
             'email' => 'required|max:100|email',
-            'category' => 'required|min:1|max:50',
+            'category' => 'required|array|min:1|max:50',
             'phone' => 'required|min:2',
             'image' => 'nullable|mimes:png,jpg,jpeg,svg|max:4096',
-            'cv' => 'nullable|mimes:pdf|max:4096'
+            'cv' => 'nullable|mimes:pdf|max:4096',
         ]);
+        // if (array_key_exists('image', $data)) {
+        //     if ($artist->image) {
+        //         Storage::delete($artist->image);
+        //     }
+        //     $img_path = Storage::disk('public')->put('images', $request->file('image'));
+        //     $data['image'] = $img_path;
+        //     $artist->image = $img_path;
+        // }
+        // if (array_key_exists('cv', $data)) {
+        //     if ($artist->cv) {
+        //         Storage::delete($artist->cv);
+        //     }
+        //     $img_path = Storage::disk('public')->put('cvs', $request->file('cv'));
+        //     $data['cv'] = $img_path;
+        //     $artist->cv = $img_path;
+        // }
 
         $artist->update($data);
         return redirect()->route('admin.home', $artist);
@@ -141,7 +168,15 @@ class UserController extends Controller
         $artist = User::where('id', Auth::user()->id)->first();
         $img = $artist->image;
         $cv = $artist->cv;
-        $doctor->delete();
+        $artist->delete();
+        // if($img && Storage::exists($img)){
+
+        //     Storage::delete($img);
+        // }
+        // if($cv && Storage::exists($cv)){
+
+        //     Storage::delete($cv);
+        // }
         return redirect('/');
     }
 }

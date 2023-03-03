@@ -19,7 +19,9 @@ sort($categories);
 @section('content')
     <h1 class="text-center  mb-3"> Modifica il tuo profilo</h1>
     <form action="{{ route('admin.users.update',$artist) }}" method="POST" enctype="multipart/form-data">
+        
         @csrf
+
         @method('PUT')
         <div class="form-group row">
             <label for="name" class="col-md-4 col-form-label text-md-right">{{ __('Modifica il tuo nome') }}</label>

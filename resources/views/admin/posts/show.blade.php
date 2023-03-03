@@ -8,6 +8,12 @@
     <div class="row">
         <div class="col-8">
              <h1>Titolo: {{ $post->title }}</h1>
+
+
+             <h2>Artista: {{ $post->user->name }}
+                <a href="{{ route('admin.users.show',$post->user->name)}}"></a>
+            </h2>
+
              <p> {{ $post->slug }}</p>
 
              <h3>Categoria: {{ $post->category->name }}</h3>

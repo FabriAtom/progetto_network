@@ -29,7 +29,7 @@ class AddForeignCategoryPostsTable extends Migration
      */
     public function down()
     {
-        Schema::table('posts', function (Blueprint $table) {
+        Schema::table('posts', function(Blueprint $table) {
             // cancelliamo la relazione tra category_id e posts.id
             $table->dropForeign(['category_id']);
             // elimino la colonna category_id

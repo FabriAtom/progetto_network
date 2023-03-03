@@ -7,7 +7,9 @@
 
             <h1 class="text-center"> Completa il tuo profilo da artista</h1>
             <form action="{{ route('admin.users.store') }}" method="POST" enctype="multipart/form-data">
+                
                 @csrf
+
                 @if(!$artist->image)
                 <div class="form-group">
                     <label for="image">Carica una foto di te</label>

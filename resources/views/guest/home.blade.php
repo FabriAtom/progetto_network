@@ -15,13 +15,12 @@
                     </tr>
                 </thead>
                 <tbody>
-                    @foreach ($posts as $post)
+                    {{-- @foreach ($posts as $post)
                     <tr>
                         <th scope="row">{{ $post->id }}</th>
                         <td>{{ $post->title }}</td>
 
 
-                        {{-- <td>{{ $post->category ? $post->category->name : 'nessuna categoria' }}</td> --}}
 
                         <td>{{ $post->category->name }}</td>
 
@@ -41,7 +40,7 @@
                             </form>
                         </td>
                     </tr>    
-                    @endforeach
+                    @endforeach --}}
                 </tbody>
             </table>
         </div>
