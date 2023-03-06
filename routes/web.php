@@ -19,15 +19,16 @@ route::get('/', function() {
 
 
 Route::get('/guesthome', 'GuestController@index')->name('index');
+Route::get('/show/{id}', 'GuestController@show')->name('show');
 
 // Route::get('/', function () {
 //     return view('guest.home');
 // })->name('guest.home');
 
-Route::get('/show/{id}', 'GuestController@show')->name('show');
 
 
-
+// Route::resource('reviews', 'ReviewController');
+Route::resource('messages', 'MessageController');
 
 Auth::routes();
 
@@ -44,7 +45,6 @@ Route::middleware('auth')
         }
     );
 
-    
-Route::get('{any?}', function () {
-    return view('guest.home');
-})->where('any', '.*');
+// Route::get('{any?}', function () {
+//     return view('guest.home');
+// })->where('any', '.*');

@@ -18,7 +18,7 @@ class UserController extends Controller
      */
     public function index()
     {
-        //
+        return view('admin.users.index');
     }
 
     /**
@@ -32,9 +32,7 @@ class UserController extends Controller
         foreach ( $r as $key => $value ) {
             
             $data = $key;
-            // dd($key);
         }
-        // $data = $doctor;
 
         $artist = User::where('id', Auth::user()->id)->first();
         if($data == Auth::user()->id){
@@ -66,19 +64,20 @@ class UserController extends Controller
                 'image' => 'nullable|mimes:png,jpg,jpeg,svg|max:4096',
                 'cv' => 'nullable|mimes:pdf|max:4096',
             ]);
-            // if (array_key_exists('phone', $data)) {
-            //     $artist->phone = $data['phone'];
-            // }
-            // if (array_key_exists('image', $data)) {
-            //     $img_path = Storage::disk('public')->put('images', $request->file('image'));
-            //     $data['image'] = $img_path;
-            //     $artist->image = $img_path;
-            // }
-            // if (array_key_exists('cv', $data)) {
-            //     $cv_path = Storage::disk('public')->put('cvs', $request->file('cv'));
-            //     $data['cv'] = $cv_path;
-            //     $artist->cv = $cv_path;
-            // }
+
+            if (array_key_exists('phone', $data)) {
+                $artist->phone = $data['phone'];
+            }
+            if (array_key_exists('image', $data)) {
+                $img_path = Storage::disk('public')->put('images', $request->file('image'));
+                $data['image'] = $img_path;
+                $artist->image = $img_path;
+            }
+            if (array_key_exists('cv', $data)) {
+                $cv_path = Storage::disk('public')->put('cvs', $request->file('cv'));
+                $data['cv'] = $cv_path;
+                $artist->cv = $cv_path;
+            }
         $artist->save();
         return redirect()->route('admin.home', $artist);
     }
@@ -90,7 +89,7 @@ class UserController extends Controller
      */
     public function show(User $user)
     {
-        // return view('admin.users.show');
+        return view('admin.users.show');
     }
 
     /**
@@ -136,22 +135,22 @@ class UserController extends Controller
             'cv' => 'nullable|mimes:pdf|max:4096',
         ]);
 
-        // if (array_key_exists('image', $data)) {
-        //     if ($artist->image) {
-        //         Storage::delete($artist->image);
-        //     }
-        //     $img_path = Storage::disk('public')->put('images', $request->file('image'));
-        //     $data['image'] = $img_path;
-        //     $artist->image = $img_path;
-        // }
-        // if (array_key_exists('cv', $data)) {
-        //     if ($artist->cv) {
-        //         Storage::delete($artist->cv);
-        //     }
-        //     $img_path = Storage::disk('public')->put('cvs', $request->file('cv'));
-        //     $data['cv'] = $img_path;
-        //     $artist->cv = $img_path;
-        // }
+        if (array_key_exists('image', $data)) {
+            if ($artist->image) {
+                Storage::delete($artist->image);
+            }
+            $img_path = Storage::disk('public')->put('images', $request->file('image'));
+            $data['image'] = $img_path;
+            $artist->image = $img_path;
+        }
+        if (array_key_exists('cv', $data)) {
+            if ($artist->cv) {
+                Storage::delete($artist->cv);
+            }
+            $img_path = Storage::disk('public')->put('cvs', $request->file('cv'));
+            $data['cv'] = $img_path;
+            $artist->cv = $img_path;
+        }
 
         $artist->update($data);
         return redirect()->route('admin.home', $artist);
@@ -169,14 +168,14 @@ class UserController extends Controller
         $img = $artist->image;
         $cv = $artist->cv;
         $artist->delete();
-        // if($img && Storage::exists($img)){
+        if($img && Storage::exists($img)){
 
-        //     Storage::delete($img);
-        // }
-        // if($cv && Storage::exists($cv)){
+            Storage::delete($img);
+        }
+        if($cv && Storage::exists($cv)){
 
-        //     Storage::delete($cv);
-        // }
+            Storage::delete($cv);
+        }
         return redirect('/');
     }
 }

@@ -19,7 +19,7 @@ class CreatePostsTable extends Migration
             // $table->unsignedBigInteger('category_id')->default()->after('id');
             // $table->foreign('category_id')->references('id')->on('categories')->onDelete('cascade');
             $table->text('content');
-            $table->text('image');
+            $table->string('image');
             // $table->text('category_id')->nullable();
             $table->string('slug')->unique();
             $table->timestamps();

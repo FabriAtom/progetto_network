@@ -39,7 +39,6 @@
                     <option value="{{ $category->id }}" @if(old('category_id') === $category->id) selected @endif> {{ $category->name }} </option>
                     @endforeach
                   </select>
-
                   <small id="helpCategory" class="form-text text-muted" >Seleziona la Categoria</small>
                   @error('category_id')
                     <div id="category" class="invalid-feedback">
@@ -47,6 +46,35 @@
                     </div>
                   @enderror
                 </div>
+{{-- 
+
+                <div class="form-group">
+                  <label for="image">Immagine copertina opera</label>
+
+                  <div class="custom-file">
+                    <input type="file" name="image" class="custom-file-input @error('image') is-invalid @endif" id="image">
+                    <label for="custom-file-label" for="image">scegli immagine...</label>
+                    @error('image')
+                      <div id="image" class="invalid-feedback">
+                        {{ $message }}
+                      </div>
+                    @enderror
+                </div> --}}
+
+
+                <div class="form-group">
+                  <label for="image">Immagine copertina opera</label>
+                  <div class="custom-file">
+                    <input type="file" name="image" class="custom-file-input @error('image') is-invalid @endif" id="image">
+                    <label class="custom-file-label" for="image">Choose file</label>
+                    @error('image')
+                    <div id="image" class="invalid-feedback">
+                      {{ $message }}
+                    </div>
+                    @enderror
+                 </div>
+                </div>
+
 
                 <div class="form-group">
                   <label for="content">Contenuto</label>

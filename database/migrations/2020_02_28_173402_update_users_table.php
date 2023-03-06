@@ -17,7 +17,7 @@ class UpdateUsersTable extends Migration
             
             $table->string('nickname',100)->nullable();
             $table->string('address',255);
-            $table->string('category',100)->nullable();
+            // $table->string('category',100)->nullable();
             $table->string('image')->nullable();
             $table->string('phone',50);
             $table->string('cv')->nullable();

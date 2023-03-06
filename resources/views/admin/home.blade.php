@@ -20,7 +20,7 @@
 
 
             <div class="card mt-5 overflow-hidden ">
-                <div class="card-header text-center"><h1>Profilo creato con successo!
+                <div class="card-header text-center"><h1>Benvenuto!
                 </div> 
             
        
@@ -29,41 +29,37 @@
                 <div class="card-header text-center"><h1> {{ $artist->name }} {{ $artist->surname }} </h1></div>
                 
                 <div class="d-flex flex-row">
+
                     @if ($artist->image)
-                            <div class="card " style="width: 50%">
-                                <img class="card-img-top" src="{{ asset('Storage/' . $artist->image) }}"
-                                alt="immagine {{ $artist->name }}">
-                            </div>
-                            @endif
+                        <div class="card " style="width: 50%">
+                            <img class="card-img-top" src="{{ asset('Storage/' . $artist->image) }}"
+                            alt="immagine {{ $artist->name }}">
+                        </div>
+                    @endif
+
                             <div class="card-body" @if (!$artist->image) style="width: 100%" @endif
                                 @if ($artist->image) style="width: 50%" @endif>
                                 <p class="card-text"><strong> Email: </strong>{{ $artist->email }}</p>
                                 <p class="card-text"> <strong> Indirizzo: </strong>{{ $artist->address }}</p>
-                                {{-- <p> <strong> Categoria :</strong>
                                     
-                                    @foreach ($artist->categories as $key => $spec)
-                                    <span class="card-text">{{ $spec->category }}@if (!$loop->last)
-                                        ,
-                                        @endif </span>
-                                        @endforeach
-                                    </p> --}}
-                                    
-                                    @if ($artist->phone)
-                                    <p class="card-text"> <strong> Numero di telefono: </strong>{{ $artist->phone }}</p>
-                                    @endif
-                                    {{--                          
-                                        @if ($artist->cv)
-                                <a class="btn btn-secondary" href="{{ asset('Storage/' . $doctor->cv) }}"
-                                    role="button">&#129047; Scarica
-                                    CV &#129047;</a>
-                                    @endif --}}
-                                    <div class="mt-3 text-center d-flex justify-content-between align-items-center flex-wrap ">
-                                        @if (!$artist->cv || !$artist->image || !$artist->services || !$artist->phone)
+                                @if ($artist->phone)
+                                 <p class="card-text"> <strong>Numero di telefono:</strong>{{ $artist->phone }}</p>
+                                @endif
+                           
+                                @if ($artist->cv)
+                                    <a class="btn btn-secondary" href="{{ asset('Storage/' . $artist->cv) }}"
+                                        role="button"> Scarica
+                                        CV
+                                    </a>
+                                @endif 
+
+                                <div class="mt-3 text-center d-flex justify-content-between align-items-center flex-wrap ">
+                                    @if (!$artist->cv || !$artist->image || !$artist->services || !$artist->phone)
                                         <a class="btn btn-primary " href="{{ route('admin.users.create', $artist) }}"
                                         role="button">Completa il tuo profilo da Artista</a>
-                                        @endif
-                                        <a class="btn btn-success" href="{{ route('admin.users.edit', $artist) }}"
-                                        role="button">Modifica
+                                    @endif
+                                    <a class="btn btn-success" href="{{ route('admin.users.edit', $artist) }}"
+                                    role="button">Modifica
                                     </a>
                                     <form action="{{ route('admin.users.destroy', $artist) }}" method="POST">
                                         @csrf

@@ -70,7 +70,7 @@
                                             Profilo
                                         </a>
                                         <a class="dropdown-item" href="{{ route('admin.posts.index') }}">
-                                            Opere
+                                            Le Mie Opere
                                         </a>
                                         <a class="dropdown-item" href="{{ route('logout') }}"
                                             onclick="event.preventDefault();

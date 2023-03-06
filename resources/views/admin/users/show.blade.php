@@ -9,7 +9,7 @@
 
 <section>
     <div class="container">
-    <h2>elenco post</h2>
+    <h2>elenco post Utente </h2>
     </div>
     <div class="container">
         <div class="row">
@@ -27,11 +27,13 @@
                     <tbody>
                         @foreach ($user->posts()->orderBy('title', 'desc')->get() as $post)
                         <tr>
+                            
                             <td>{{ $post->id }}</td>
                             <td>{{ $post->title }}</td>
                             <td>{{ $post->content }}</td>
                             <td>{{ $post->image }}</td>
                             <td>{{ $post->slug }}</td>
+
                         </tr>
                     </tbody>
                 </table>

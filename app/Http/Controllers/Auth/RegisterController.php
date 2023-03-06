@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Auth;
 use App\Http\Controllers\Controller;
 use App\Providers\RouteServiceProvider;
 use App\User;
+use App\Category;
 use Illuminate\Foundation\Auth\RegistersUsers;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
@@ -53,7 +54,7 @@ class RegisterController extends Controller
             'name' => ['required', 'string', 'max:255'],
             'surname' => ['required', 'string', 'max:100'],
             'address' => ['required', 'string', 'max:255'],
-            'specialization' => ['required', 'array', 'max:255'],
+            'category' => ['required', 'array', 'max:255'],
             'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
             'password' => ['required', 'string', 'min:8', 'confirmed'],
         ]);
@@ -80,6 +81,5 @@ class RegisterController extends Controller
         $new_artist->password = Hash::make($data['password']);
 
         $new_artist->save();
-
     }
 }

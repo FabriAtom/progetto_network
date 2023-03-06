@@ -40,14 +40,12 @@ class UserSeeder extends Seeder
             $new_artist->name = $faker->firstName();
             $new_artist->surname = $faker->unique()->lastName();
             $new_artist->address = $faker->address();
-            $new_artist->email = $new_artist->name . $new_artist->surname . rand(0, 99) . '@gmail.com';
+            $new_artist->email = $new_artist->name . $new_artist->surname . rand(0, 50) . '@gmail.com';
             $new_artist->password = Hash::make('KGPARTNERS');
             // $new_artist->category = $category[rand(0, 2)];
             $new_artist->phone = $faker->phoneNumber();
 
             $new_artist->save();
-
-
         }
     }
 }
