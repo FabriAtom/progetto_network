@@ -8,31 +8,35 @@
     <div class="row">
         <div class="col-8">
              <h1>Titolo: {{ $post->title }}</h1>
-
-
              <h2>Artista: {{ $post->user->name }}
-                <a href="{{ route('admin.users.show',$post->user->name)}}"></a>
+                {{-- <a href="{{ route('admin.users.show',$post->user->name) }}"></a> --}}
             </h2>
 
-             <p> {{ $post->slug }}</p>
+            @if ($post->image)
+                <div class="col-12">
+                    <img src="{{ $post->$img_path->image }}" width="400px" alt="">
+                </div> 
+            @endif
 
-             <h3>Categoria: {{ $post->category->name }}</h3>
+            @if (!$post->image)
+                <div class="card" style="border:0;">
+                    <img class="card-img-top" style="width: 20rem; height:300px; margin-top:14px;" src="{{ asset('Storage/' . $post->image) }}" alt="{{ $post->name }}">                               
+                 </div>   
+            @endif 
 
-             {{-- SE C'è LA CATEGORIA ALLORA STAMPEREMO --}}
-              {{-- @if($post->category)
-              <p>{{ $post->category->name }}</p>
-              @endif --}}
+            <p> {{ $post->slug }}</p>
 
-             {{-- @dump($post->category()) --}}
+            <h3>Categoria: {{ $post->category->name }}</h3>
 
-             <ul class="d-flex gap-5">
+            <ul class="d-flex gap-5">
                 <li>{{ $post->created_at }}</li>
                 <li>{{ $post->updated_at }}</li>
-             </ul>
+            </ul>
         </div>
+
         <div class="col-4  text-left d-flex justify-content-end align-items-center">
              <a href="{{ route('admin.posts.edit', $post) }}" type="button" class="btn btn-primary btn-sm">Modifica</a>
-             {{-- form eliminazione --}}
+
              <form action="{{ route('admin.posts.destroy', $post) }}" method="POST">
 
                 @csrf
@@ -45,6 +49,8 @@
 </div>
 
 
+
+
 <div class="container">
     <div class="row">
         <div class="col-12">
@@ -55,17 +61,18 @@
     </div>
 </div>
 
+
 {{-- elenco post che hanno la stessa categoria --}}
-{{-- <div class="container">
+<div class="container">
     <div class="row">
         <div class="col-12">
-            @if($post->category)
-            @foreach($post->category->posts as $relatedPost) 
+            @if($post->user)
+            @foreach($post->user->posts as $relatedPost) 
 
             <p>{{ $relatedPost->title }}</p>
             @endforeach
             @endif
         </div>
     </div>
-</div> --}}
+</div>
 @endsection

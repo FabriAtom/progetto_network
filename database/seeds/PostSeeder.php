@@ -2,7 +2,7 @@
 
 use App\Category;
 use App\Post;
-use App\User;
+// use App\User;
 use Illuminate\Database\Seeder;
 use Faker\Generator as Faker;
 use Illuminate\Support\Str;
@@ -18,7 +18,7 @@ class PostSeeder extends Seeder
     public function run(Faker $faker)
     {
 
-        $users = User::all()->pluck('id');
+        // $users = User::all()->pluck('id');
         $categoryIds = Category::All()->pluck('id');
         $userIds = User::All()->pluck('id');
 
@@ -28,11 +28,9 @@ class PostSeeder extends Seeder
                 $new_post = new Post();
                 $new_post->user_id = $user_id;
                 $new_post->title = $faker->words( rand(1,3), true );
-                $new_post->image = $faker->image(null, 640, 480);
                 $new_post->content = $faker->paragraphs( rand(1,2), true );
                 $new_post->slug = Str::slug($new_post->title);
-                $new_post->category_id = $faker->randomElement($categoryIds);
-                // $post->user_id = $user;
+                $new_post->category_id = $faker->optional()->randomElement($categoryIds);
                 $new_post->user_id = $faker->randomElement($userIds);
 
                 $new_post->save();

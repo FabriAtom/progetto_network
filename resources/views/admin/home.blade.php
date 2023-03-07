@@ -54,7 +54,7 @@
                                 @endif 
 
                                 <div class="mt-3 text-center d-flex justify-content-between align-items-center flex-wrap ">
-                                    @if (!$artist->cv || !$artist->image || !$artist->services || !$artist->phone)
+                                    @if (!$artist->cv || !$artist->image || !$artist->phone)
                                         <a class="btn btn-primary " href="{{ route('admin.users.create', $artist) }}"
                                         role="button">Completa il tuo profilo da Artista</a>
                                     @endif

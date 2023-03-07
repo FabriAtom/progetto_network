@@ -16,9 +16,9 @@ class AddForeignCategoryPostsTable extends Migration
     {
         Schema::table('posts', function (Blueprint $table) {
             // aggiunta colonna
-            $table->unsignedBigInteger('category_id')->default()->after('id');
+            $table->unsignedBigInteger('category_id')->after('id');
             // collegata con rispettiva colonna con chiave primaria
-            $table->foreign('category_id')->references('id')->on('categories')->onDelete('cascade');
+            $table->foreign('category_id')->references('id')->on('categories');
         });
     }
 

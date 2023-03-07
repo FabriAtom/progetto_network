@@ -7,45 +7,37 @@
 
     @section('content')
     
-    {{-- <div class="jumbotron">
-        <h1 class="display-4 text-center">BDoctors</h1>
-        <hr class="my-4">
-    </div> --}}
+    
     
     
 <div class="container-fluid">
-      @if (session('review-success'))
+      {{-- @if (session('review-success'))
       <div class="alert alert-success">
          <h3>Hai inviato con successo la tua recensione!</h3>
-      </div>
-       @endif 
+      </div> 
+       @endif--}} 
     
     <div class="row justify-content-center">
         <div class="card mt-5 overflow-hidden" style="width: 1000px;">
             <span class="badge badge-warning" style="color:black">stai guardando:</span>
 
           <div class="card-header text-center"> <h3> Artista {{ $user->name }} {{ $user->surname }} </h3>
+            @if ($user->image)
+                <div class="card-img-top justify-content-center">
+                    <img class="card-img-top " style="width: 16rem; height: 170px; margin-top: 14px" src="{{ asset('Storage/' . $user->image) }}" alt="immagine {{ $user->name }}">                               
+                </div>
+            @endif
+            @if (!$user->image)
+                <div class="card-img-top">
+                    <img src="https://picsum.photos/200/300" style="width: 16rem; height: 170px; margin-top: 14px" alt="default-avatar">
+                </div>
+            @endif 
              
           </div>
           <div class="d-flex flex-row">
-                {{-- @if ($user->image)
-                    <div class="card " style="width: 50%">
-                        <img class="card-img-top" src="{{ asset('Storage/' . $user->image) }}"
-                            alt="immagine {{ $user->name }}">
-                    </div>
-                @endif --}}
-                <div class="card-body" @if (!$user->image) style="width: 100%" @endif
-                    @if ($user->image) style="width: 50%" @endif>
+                <div class="card-body">
                     <p class="card-text"><strong> Email: </strong>{{ $user->email }}</p>
                     <p class="card-text"> <strong> Indirizzo: </strong>{{ $user->address }}</p>
-                    {{-- <p> <strong> Specializzazioni :</strong>
-        
-                        @foreach ($user->specializations as $key => $spec)
-                            <span class="card-text">{{ $spec->specialization }}@if (!$loop->last)
-                                    ,
-                                @endif </span>
-                        @endforeach
-                    </p> --}}
         
                     @if ($user->phone)
                         <p class="card-text"> <strong> Numero di telefono: </strong>{{ $user->phone }}</p>

@@ -1,10 +1,8 @@
-
 {{-- dettagli dell artista loggato
     possibilità di accedere all'edit
     possibilità di leggere le recensioni
     possibilità di leggere i messaggi
-    possibilità di vedere le statistiche --}}
-@extends('layouts.app')
+    possibilità di vedere le statistiche 
 @section('content')
 
 <section>
@@ -43,4 +41,4 @@
 </section>
 
 
-@endsection
+@endsection --}}
