@@ -16,6 +16,9 @@ class DatabaseSeeder extends Seeder
             CategorySeeder::class,
             CompanySeeder::class,
             PostSeeder::class,
+            MessageSeeder::class,
+            ReviewSeeder::class,
         ]);
+
     }
 }

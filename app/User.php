@@ -44,12 +44,14 @@ class User extends Authenticatable
 
 
     // relazione messaggi e recensioni
-    // public function reviews(){
-    //     return $this->hasMany('App\Review');
-    // }
-    // public function messages(){
-    //     return $this->hasMany('App\Message');
-    // }
+
+    public function reviews(){
+        return $this->hasMany('App\Review');
+    }
+    
+    public function messages(){
+        return $this->hasMany('App\Message');
+    }
 }
 
 

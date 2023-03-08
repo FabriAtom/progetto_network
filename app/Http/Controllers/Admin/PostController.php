@@ -57,10 +57,10 @@ class PostController extends Controller
 
         $params['slug'] = Post::getUniqueSlugFrom($params['title']);
 
-        if (array_key_exists('image', $params)) {
-            $img_path = Storage::disk('images')->put('images', $params['image']);
-            $params['images'] = $img_path;
-        }
+        // if (array_key_exists('image', $params)) {
+        //     $img_path = Storage::disk('images')->put('images', $params['image']);
+        //     $params['images'] = $img_path;
+        // }
 
         $post = Post::create($params);
 
@@ -87,8 +87,8 @@ class PostController extends Controller
      */
     public function edit(Post $post)
     {
-        // $params = $post;
-        // $posts = Post::orderBy('title', 'asc')->get();
+        $data = $post;
+        // $posts = Post::where()->get();
         $categories = Category::orderBy('name', 'asc')->get();
         return view('admin.posts.edit', compact('categories', 'post'));
     }

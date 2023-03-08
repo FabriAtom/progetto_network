@@ -15,6 +15,7 @@ class AddForeignUserIdPostsTable extends Migration
     {
         Schema::table('posts', function (Blueprint $table) {
             $table->unsignedBigInteger('user_id')->after('id');
+            
             $table->foreign('user_id')->references('id')->on('users');
         });
     }

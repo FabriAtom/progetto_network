@@ -16,11 +16,8 @@ class CreatePostsTable extends Migration
         Schema::create('posts', function (Blueprint $table) {
             $table->id();
             $table->string('title');
-            // $table->unsignedBigInteger('category_id')->default()->after('id');
-            // $table->foreign('category_id')->references('id')->on('categories')->onDelete('cascade');
             $table->text('content');
             $table->string('image')->nullable();
-            // $table->text('category_id')->nullable();
             $table->string('slug')->unique();
             $table->timestamps();
         });
@@ -34,6 +31,5 @@ class CreatePostsTable extends Migration
     public function down()
     {
          Schema::dropIfExists('posts');
-    
     }
 }

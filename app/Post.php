@@ -23,6 +23,10 @@ class Post extends Model
         return $this->belongsTo('App\Category');
         // return $this->belongsTo('App\Category','category_id','id');
     }
+    
+    public function user() {
+        return $this->belongsTo('App\User');
+    }
 
     static public function getUniqueSlugFrom($title) {
         // rigenerare lo slug
@@ -42,9 +46,6 @@ class Post extends Model
     }
 
 
-    public function user() {
-        return $this->belongsTo('App\User');
-    }
 
 
     

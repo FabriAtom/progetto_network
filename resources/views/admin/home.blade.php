@@ -74,6 +74,56 @@
             </div>
         </div>
     </div>
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-md-8 mt-4">
+
+                @if (count($messages) > 0)
+                    <h2 class="text-center mt-4">Messaggi Ricevuti:</h2>
+                    <div style="height: 500px; overflow-y:scroll" class=" mt-5">
+                        @foreach ($messages as $message)
+                            <div class="card text-center mb-2 text-wrap">
+                                <div class="card-header">
+                                    <h5>Da: {{ $message->name_sender }} {{ $message->surname_sender }}</h5>
+                                </div>
+                                <div class="card-body">
+                                    <p class="card-text">
+                                        {{ $message->message_sender }}
+                                    </p>
+                                    <blockquote class="blockquote mb-0">
+                                        <a href="#"><footer class="blockquote-footer">{{ $message->mail_sender }}</footer></a>
+                                    </blockquote>
+                                </div>
+                                <div class="card-footer text-white bg-secondary">
+                                    Inviato il: {{ $message->created_at->format('d-m-Y H:m') }}
+                                </div>
+                            </div>
+                        @endforeach
+                    </div>
+                @endif
+                @if (count($reviews) > 0)
+                    <h2 class="text-center mt-5">Recensioni Ricevute:</h2>
+                    <div style="height: 500px; overflow-y:scroll" class=" mt-5">
+                        @foreach ($reviews as $review)
+                            <div class="card text-center mb-2 text-wrap">
+                                <div class="card-header">
+                                    <h5>Da: {{ $review->name_reviewer }} {{ $review->surname_reviewer }}</h5>
+                                </div>
+                                <div class="card-body">
+                                    <p class="card-text">
+                                        {{ $review->review }}
+                                    </p>
+                                </div>
+                                <div class="card-footer text-white bg-secondary">
+                                    il: {{ $review->created_at->format('d-m-Y H:m') }}
+                                </div>
+                            </div>
+                        @endforeach
+                    </div>
+                @endif
+            </div>
+        </div>
+    </div>
 @endsection
 
 

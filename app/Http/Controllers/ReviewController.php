@@ -2,11 +2,11 @@
 
 namespace App\Http\Controllers;
 
-use App\Message;
+use App\Review;
 use App\User;
 use Illuminate\Http\Request;
 
-class MessageController extends Controller
+class ReviewController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -36,27 +36,25 @@ class MessageController extends Controller
      */
     public function store(Request $request, User $user)
     {
-        
         $data = $request->all();
-        $params = $request->validate([
-            'name_sender'=>'required|min:3',
-            'surname_sender'=>'required|min:3',
-            'message_sender'=>'required|min:3',
-            'mail_sender'=>'required|email',
-            'user_id'=>'required|exists:users,id'
-        ]);
+        // dd($data);
+       $params = $request->validate([
+         'name_reviewer'=>'required|min:3',
+         'surname_reviewer'=>'required|min:3',
+         'review'=>'required|min:3',
+         'user_id'=>'required|exists:users,id'
+       ]); 
 
-        $user = User::findOrFail($data['user_id']);
-        $message = new Message();
-        $message->name_sender = $data['name_sender'];
-        $message->surname_sender = $data['surname_sender'];
-        $message->mail_sender = $data['mail_sender'];
-        $message->message_sender = $data['message_sender'];
-        $message->user_id = $data['user_id'];
+       $user = User::findOrFail($data['user_id']);
+       $review = new Review();
+       $review->name_reviewer = $data['name_reviewer'];
+       $review->surname_reviewer = $data['surname_reviewer'];
+       $review->review = $data['review'];
+       $review->user_id = $data['user_id'];
 
-        $message->save();
+       $review->save();
 
-        return redirect()->route('index', $user )->with('message-success', $user);
+       return redirect()->route('show', $user )->with('review-success', $user);
     }
 
     /**
