@@ -33,7 +33,6 @@ class PostController extends Controller
     public function create(Request $request)
     {
         $users = User::orderBy('name', 'asc')->get();
-        // $users = User::where('id', Auth::user()->id)->first();
         $categories = Category::orderBy('name','asc')->get();
         return view('admin.posts.create', compact('categories','users'));
     }
@@ -48,8 +47,8 @@ class PostController extends Controller
     {
 
         $params = $request->validate([
-            'title' => 'required|max:255|min:5',
-            'content' => 'required',
+            'title' => 'required|max:20|min:5',
+            'content' => 'required|max:100|min:5',
             'image' => 'nullable|mimes:png,jpg,jpeg,svg|max:4096',
             'slug' => 'required|max:255',
             'category_id' => 'required|exists:categories,id',
@@ -60,7 +59,7 @@ class PostController extends Controller
 
         if (array_key_exists('image', $params)) {
             $img_path = Storage::disk('images')->put('images', $params['image']);
-            $params['operas'] = $img_path;
+            $params['images'] = $img_path;
         }
 
         $post = Post::create($params);
@@ -88,6 +87,8 @@ class PostController extends Controller
      */
     public function edit(Post $post)
     {
+        // $params = $post;
+        // $posts = Post::orderBy('title', 'asc')->get();
         $categories = Category::orderBy('name', 'asc')->get();
         return view('admin.posts.edit', compact('categories', 'post'));
     }
@@ -101,12 +102,6 @@ class PostController extends Controller
      */
     public function update(Request $request, Post $post)
     {
-        // dd($request->file('image'));
-        // $categories = Category::orderBy('name','asc')->get();
-        // return view('admin.posts.create', compact('categories'));
-        // dd($request->all());
-
-        // dd($request->all());
 
         $params = $request->validate([
             'title' => 'required|max:255|min:5',
