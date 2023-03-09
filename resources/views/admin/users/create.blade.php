@@ -47,4 +47,4 @@
         </div>
     @endif --}}
 
-@endsection
+ @endsection

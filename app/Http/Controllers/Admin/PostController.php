@@ -32,7 +32,9 @@ class PostController extends Controller
      */
     public function create(Request $request)
     {
+        // $artists = $users;
         $users = User::orderBy('name', 'asc')->get();
+        // $posts = Post::findOrFail();
         $categories = Category::orderBy('name','asc')->get();
         return view('admin.posts.create', compact('categories','users'));
     }
@@ -45,6 +47,7 @@ class PostController extends Controller
      */
     public function store(Request $request, Post $post)
     {
+        $post = Post::where('id', Auth::user()->id)->first();
 
         $params = $request->validate([
             'title' => 'required|max:20|min:5',
@@ -156,6 +159,6 @@ class PostController extends Controller
             Storage::delete($img);
         }
 
-        return redirect()->route('admin.posts.index');
+        return redirect()->route('admin.users.show', $artist);
     }
 }

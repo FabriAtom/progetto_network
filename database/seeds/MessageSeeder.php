@@ -29,7 +29,6 @@ class MessageSeeder extends Seeder
             $new_message -> user_id = $faker->randomElement($user);
             $new_message -> created_at = $date;
            
-
             $new_message -> save();
         }
     }

@@ -34,8 +34,6 @@
           </div>
     </section>  
 
-
-
     <section>
         <h3 class="pt-5 pb-5" style="padding-left:2rem">Opere in Evidenza</h3>
         <div class="row row-cols-1 row-cols-md-3 g-4">

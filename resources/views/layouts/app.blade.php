@@ -50,6 +50,7 @@
                                 <li class="nav-item">
                                     <a class="nav-link" href="{{ route('login') }}">{{ __('Accedi') }}</a>
                                 </li>
+
                                 @if (Route::has('register'))
                                     <li class="nav-item">
                                         <a class="nav-link" href="{{ route('register') }}">{{ __('Registrati') }}</a>
@@ -69,9 +70,7 @@
                                         <a class="dropdown-item" href="{{ route('admin.home') }}">
                                             Profilo
                                         </a>
-                                        <a class="dropdown-item" href="{{ route('admin.posts.index') }}">
-                                            Le Mie Opere
-                                        </a>
+
                                         <a class="dropdown-item" href="{{ route('logout') }}"
                                             onclick="event.preventDefault();
                                                         document.getElementById('logout-form').submit();">
@@ -86,7 +85,7 @@
                             @endguest  
                             
                             <li class="nav-item">
-                                <a class="nav-link active" aria-current="page"  href="{{ route('homepage') }}">Home</a>
+                                <a class="nav-link" aria-current="page"  href="{{ route('homepage') }}">Home</a>
                             </li>
                             {{-- <li class="nav-item">
                                 <a class="nav-link" href="#">Blog</a>
@@ -127,6 +126,7 @@
 
     <main>
         @yield('content')
+        @yield('vuecontent')
     </main>
     
 </body>

@@ -61,6 +61,9 @@
                                     <a class="btn btn-success" href="{{ route('admin.users.edit', $artist) }}"
                                     role="button">Modifica
                                     </a>
+                                    <a class="btn btn-success" href="{{ route('admin.users.show', $artist) }}">
+                                        Le Mie Opere
+                                    </a>
                                     <form action="{{ route('admin.users.destroy', $artist) }}" method="POST">
                                         @csrf
                                         @method('DELETE')
@@ -74,6 +77,8 @@
             </div>
         </div>
     </div>
+
+  
     <div class="container">
         <div class="row justify-content-center">
             <div class="col-md-8 mt-4">

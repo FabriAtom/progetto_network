@@ -8,9 +8,9 @@
         <div class="col-8">
             <h1>Tutte le Opere:</h1>
         </div>
-        <div class="col-4 text-left d-flex justify-content-end align-items-center">
-            <a href="{{ route('admin.posts.create','user_id') }}" type="button" class="btn btn-primary btn-sm">Aggiungi Post</a>
-        </div>
+        {{-- <div class="col-4 text-left d-flex justify-content-end align-items-center">
+            <a href="{{ route('admin.posts.create','user') }}" type="button" class="btn btn-primary btn-sm">Aggiungi Post</a>
+        </div> --}}
     </div>
 </div>
 
@@ -19,7 +19,7 @@
     <div class="row">
         @foreach ($posts as $post)
             <div class="col">
-                <a href="{{ route('admin.posts.show', $post) }}" style="text-decoration: none;">
+                <a href="{{ route('admin.posts.show', 'user_id') }}" style="text-decoration: none;">
                     <div class="card mb-5 text-center border-dark">
                         <div class="card-header text-center"><h3> {{ $post->title }}</h3></div> 
                         @if ($post->image)
@@ -29,7 +29,7 @@
                         @endif
                         @if (!$post->image)
                             <div class="card">
-                                <img class="card-img-top " style="width: 20rem; height:300px; margin-top:14px; margin-left:80px;" src="{{ asset('Storage/' . $post->image) }}" alt="{{ $post->name }}">                               
+                                <img class="card-img-top " style="width: 20rem; height:300px; margin-top:10px; margin-bottom:10px; margin-left:80px;" src="../img/monnalisa.jpg" alt="{{ $post->name }}">                               
                             </div>   
                         @endif   
                         <div class="card-body">
@@ -41,20 +41,68 @@
                 </a>    
             </div>      
         @endforeach
-        
-                
-                
-                
-                
-            {{-- @if($post->user)
-                @foreach($post->user->posts as $relatedPost)
-                    <p>{{ $relatedPost->title }}</p>
-                @endforeach
-            @endif
-        </div> --}}
     </div>
 </div>
 @endsection
+        
+
+        {{-- @if ($post->user_id)
+            
+        @endif
+
+
+        @if (!$post->user_id)
+
+        @endif
+
+        <div class="container">
+            <h1>Opere di {{ $post->user->name }}</h1>
+            <div class="row">
+                <div class="col-6">
+                    @if($post->user_id)
+                        @foreach($post->user->posts as $relatedPost) 
+                            <div class="card-deck">
+                                <div class="card">
+                                    <h4 class="card-title pl-3 pt-3"><strong>Opera: </strong>{{ $relatedPost->title }}</h4>
+
+                                    @if ($post->image)
+                                        <div class="col-12">
+                                            <img src="{{ $post->$img_path->image }}" width="400px" alt="">
+                                        </div> 
+                                    @endif
+                                    @if (!$post->image)
+                                        <div class="card" style="border:0;">
+                                            <img class="card-img-top" style="width: 20rem; height:300px; margin-top:14px;" src="{{ asset('Storage/' . $post->image) }}" alt="{{ $post->name }}">                               
+                                        </div>   
+                                    @endif 
+
+                                    <div class="card-body">
+                                        <p><strong>Categoria: </strong>{{ $post->category->name }}</p>
+                                        <p class="card-text"><strong>description: </strong>{{ $relatedPost->content }}</p>
+                                    </div>
+
+                                    <div class="card-footer">
+                                        <small class="text-muted">Creato il: {{ $relatedPost->created_at }}</small>
+                                    </div>
+                                    
+                                    <div class="col-4  text-left d-flex justify-content-end align-items-center">
+                                        <a href="{{ route('admin.posts.show', $post->id) }}" type="button" class="btn btn-primary btn-sm">Modifica</a>
+
+                                        <form action="{{ route('admin.posts.destroy', $post) }}" method="POST">
+
+                                            @csrf
+                                            @method('DELETE')
+                                            
+                                            <input type="submit" value="Elimina" class="btn btn-danger btn-sm">
+                                        </form>
+                                    </div>
+                                </div>
+                            </div>
+                        @endforeach
+                    @endif
+                </div>
+            </div>
+        </div> --}}
 
 
 

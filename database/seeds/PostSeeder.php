@@ -23,12 +23,16 @@ class PostSeeder extends Seeder
         $userIds = User::All()->pluck('id');
 
         foreach($users as $user_id) {
-            
+
             for ($i=0; $i < 30; $i++) { 
+                
                 $new_post = new Post();
                 $new_post->user_id = $user_id;
                 $new_post->title = $faker->words( rand(1,3), true );
                 $new_post->content = $faker->paragraphs( rand(1,2), true );
+
+                // $new_post->image = $faker->imageUrl(640, 480, 'animals', true);
+
                 $new_post->slug = Str::slug($new_post->title);
                 $new_post->category_id = $faker->randomElement($categoryIds);
                 $new_post->user_id = $faker->randomElement($userIds);

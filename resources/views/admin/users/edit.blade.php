@@ -83,7 +83,7 @@ sort($categories);
                         name="address" value="{{ $artist->address }}" required autocomplete="address" autofocus>
     
                     @error('address')
-                        <span class="invalid-feedback" role="alert">
+                        <span class="text-danger" role="alert">
                             <strong>{{ $message }}</strong>
                         </span>
                     @enderror
@@ -95,35 +95,34 @@ sort($categories);
                 <label for="phone" class="col-md-4 col-form-label text-md-right">{{ __('Modifica il tuo numero') }}</label>
     
                 <div class="col-md-6">
-                    <input id="phone" type="text" class="form-control @error('phone') is-invalid @enderror"
-                        name="phone" value="{{ old('phone',$artist->phone) }}" required autocomplete="phone" autofocus>
+                    <input id="phone" type="number" class="form-control @error('phone') is-invalid @enderror"
+                        name="phone" value="{{ old('phone', $artist->phone) }}" required autocomplete="phone" autofocus>
     
                     @error('phone')
-                        <span class="invalid-feedback" role="alert">
+                        <span class="text-danger" role="alert">
                             <strong>{{ $message }}</strong>
                         </span>
                     @enderror
                 </div>
             </div>
 
-        @if($artist->image)
-            <div class="form-group row">
-                <label class="col-md-4 col-form-label text-md-right" for="image">Cambia la tua foto profilo</label>
-                <div class="col-md-6">
-                    <input type="file" name="image" class="form-control-file" id="image">
+            @if($artist->image)
+                <div class="form-group row">
+                    <label class="col-md-4 col-form-label text-md-right" for="image">Cambia la tua foto profilo</label>
+                    <div class="col-md-6">
+                        <input type="file" name="image" class="form-control-file" id="image">
+                    </div>
                 </div>
-            </div>
-        @endif
-        @if($artist->cv)
-            <div class="form-group row">
-                <label class="col-md-4 col-form-label text-md-right" for="cv">Cambia il tuo CV</label>
-                <div class="col-md-6">
-
-                    <input type="file" name="cv" class="form-control-file" id="cv">
+            @endif
+            @if($artist->cv)
+                <div class="form-group row">
+                    <label class="col-md-4 col-form-label text-md-right" for="cv">Cambia il tuo CV</label>
+                    <div class="col-md-6">
+                        <input type="file" name="cv" class="form-control-file" id="cv">
+                    </div>
                 </div>
-            </div>
-        @endif
-            <p>
+            @endif
+            <p style="text-align:center;">
                <input type="submit" value="salva">
             </p>
         </form>
@@ -132,3 +131,19 @@ sort($categories);
 
 
 @endsection 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

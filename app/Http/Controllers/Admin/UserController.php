@@ -91,7 +91,8 @@ class UserController extends Controller
      */
     public function show(User $user)
     {
-        return view('admin.users.show');
+        $artist = User::where('id', Auth::user()->id)->first();
+        return view('admin.users.show', compact('artist'));
     }
 
     /**
