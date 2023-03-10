@@ -31,14 +31,14 @@
                 <div class="d-flex flex-row">
 
                     @if ($artist->image)
-                        <div class="card " style="width: 50%">
+                        <div class="card" style="width: 50%">
                             <img class="card-img-top" src="{{ asset('Storage/' . $artist->image) }}"
                             alt="immagine {{ $artist->name }}">
                         </div>
                     @endif
 
                             <div class="card-body" @if (!$artist->image) style="width: 100%" @endif
-                                @if ($artist->image) style="width: 50%" @endif>
+                                @if ($artist->image) style="width: 80%" @endif>
                                 <p class="card-text"><strong> Email: </strong>{{ $artist->email }}</p>
                                 <p class="card-text"> <strong> Indirizzo: </strong>{{ $artist->address }}</p>
                                     
@@ -48,12 +48,11 @@
                            
                                 @if ($artist->cv)
                                     <a class="btn btn-secondary" href="{{ asset('Storage/' . $artist->cv) }}"
-                                        role="button"> Scarica
-                                        CV
+                                        role="button"> Scarica CV
                                     </a>
                                 @endif 
 
-                                <div class="mt-3 text-center d-flex justify-content-between align-items-center flex-wrap ">
+                                <div class="mt-5 text-center d-flex justify-content-between align-items-center flex-wrap ">
                                     @if (!$artist->cv || !$artist->image || !$artist->phone)
                                         <a class="btn btn-primary " href="{{ route('admin.users.create', $artist) }}"
                                         role="button">Completa il tuo profilo da Artista</a>
@@ -129,6 +128,7 @@
             </div>
         </div>
     </div>
+</div>
 @endsection
 
 

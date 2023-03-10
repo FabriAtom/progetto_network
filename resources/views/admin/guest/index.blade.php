@@ -69,8 +69,6 @@
       @foreach ($users as $user)
        <div class="col">
         <a href="{{ route('show', $user) }}" style="text-decoration: none;">
-
-          
             <div class="card mb-5 text-center border-dark" style="height: 450px; background:grey"> 
               @if ($user->image)
               <div class="card-img-top justify-content-center">
@@ -79,7 +77,7 @@
               @endif
               @if (!$user->image)
                   <div class="card-img-top">
-                      <img src="https://picsum.photos/200/300" style="width: 16rem; height: 170px; margin-top: 14px" alt="default-avatar">
+                      <img src="../img/foto.jpg" style="width: 16rem; height: 170px; margin-top: 14px" alt="default-avatar">
                   </div>
               @endif    
               <div class="card-body">

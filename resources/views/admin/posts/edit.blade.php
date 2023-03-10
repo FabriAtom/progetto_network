@@ -50,8 +50,8 @@
                 </div>
 
 
-                {{-- <div class="form-group">
-                  <label for="image">Immagine copertina opera</label>
+                <div class="form-group">
+                  <label for="image">Immagine copertina Opera</label>
                   <div class="custom-file">
                     <input type="file" name="image" class="custom-file-input @error('image') is-invalid @enderror" id="image">
                     <label class="custom-file-label" for="image">scegli un file</label>
@@ -62,7 +62,7 @@
                     </div>
                     @enderror
                  </div>
-                </div> --}}
+                </div>
 
 
                 <div class="form-group">

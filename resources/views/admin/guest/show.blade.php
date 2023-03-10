@@ -19,7 +19,7 @@
     
     <div class="row justify-content-center">
         <div class="card mt-5 overflow-hidden" style="width: 1000px;">
-            <span class="badge badge-warning" style="color:black">stai guardando:</span>
+            <span class="badge badge-warning" style="color:black">Stai guardando:</span>
 
           <div class="card-header text-center"> <h3> Artista {{ $user->name }} {{ $user->surname }} </h3>
             @if ($user->image)
@@ -29,7 +29,7 @@
             @endif
             @if (!$user->image)
                 <div class="card-img-top">
-                    <img src="https://picsum.photos/200/300" style="width: 16rem; height: 170px; margin-top: 14px" alt="default-avatar">
+                    <img src="../img/foto.jpg" style="width: 16rem; height: 170px; margin-top: 14px" alt="default-avatar">
                 </div>
             @endif 
              
@@ -55,6 +55,7 @@
     </div>
 
     <h1>Opere dell'Artista</h1>
+
 <hr>
 
     {{-- 
