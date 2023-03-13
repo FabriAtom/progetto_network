@@ -9,7 +9,7 @@ possibilità di vedere le statistiche  --}}
 @section('content')
 
     <div class="container" style="display:flex; justify-content:flex-end;" >
-        <a style="text-decoration: none;" href=" {{ route('admin.posts.create') }}">Aggiungi Artista</a>
+        <a style="text-decoration: none;" href=" {{ route('admin.posts.create') }}"> <strong>Aggiungi Opera</strong></a>
     </div>
     
     <section>
@@ -41,6 +41,7 @@ possibilità di vedere le statistiche  --}}
                                     <div class="card-body">
                                         <h5><strong>Categoria: </strong>{{ $post->category->name }}</h5>
                                         <p class="card-text"><strong>Descrizione: <br> </strong>{{ $post->content }}</p>
+
                                     </div>
 
                                     <div class="card-footer">

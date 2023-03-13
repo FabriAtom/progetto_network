@@ -14,43 +14,44 @@
 
 
 <div class="container">
-    <div class="row">
-       <div class="col-12">
-            <form action="{{ route('admin.posts.update', $post) }}" method="POST" enctype="multipart/form-data">
-                @csrf
-                @method('PUT')
+  <div class="row">
+    <div class="col-12">
+      <form action="{{ route('admin.posts.update', $post) }}" method="POST">
+
+        @csrf
+        @method('PUT')
                 
 
-                <div class="form-group">
-                  <label for="title">Titolo</label>
-                  <input type="text" class="form-control @error('title') is-invalid @enderror" id="title" value="{{ old('title', $post->title) }}" name="title" aria-describedby="helpTitle" >
-                  <small id="helpTitle" class="form-text text-muted">Inserisci il titolo del Post.</small>
-                  @error('title')
-                    <div id="title" class="text-danger">
-                        {{ $message }}
-                    </div>
-                  @enderror
-                </div>
+        <div class="form-group">
+          <label for="title">Titolo</label>
+          <input type="text" class="form-control @error('title') is-invalid @enderror" id="title" value="{{ old('title', $post->title) }}" name="title" aria-describedby="helpTitle">
+          <small id="helpTitle" class="form-text text-muted">Inserisci il titolo del Post.</small>
+          @error('title')
+            <div id="title" class="invalid-feedback">
+              {{ $message }}
+            </div>
+          @enderror
+        </div>
 
-                <div class="form-group">
-                  <label for="category">Categoria</label>
-                  <select name="category_id" class="custom-select @error('category_id') is-invalid @enderror">
-                    <option value=""></option>
-                    @foreach($categories as $category)
-                     <option @if(old('category_id', $post->category_id) === $category->id) selected @endif value="{{ $category->id }}"> {{ $category->name }} </option>
-                    @endforeach
-                  </select>
-                  <small id="helpCategory" class="form-text " >Seleziona la Categoria</small>
+        <div class="form-group">
+          <label for="category">Categoria</label>
+          <select name="category_id" class="custom-select @error('category_id') is-invalid @enderror">
+            <option value=""></option>
+            @foreach($categories as $category)
+              <option @if(old('category_id', $post->category_id) == $category->id) selected @endif value="{{ $category->id }}">{{ $category->name }}</option>
+            @endforeach
+          </select>
+          <small id="helpCategory" class="form-text text-muted">Seleziona la Categoria</small>
 
-                  @error('category_id')
-                    <div id="category" class="text-danger">
-                        {{ $message }}
-                    </div>
-                  @enderror
-                </div>
+          @error('category_id')
+            <div id="category"class="invalid-feedback">
+              {{ $message }}
+            </div>
+          @enderror
+        </div>
 
 
-                <div class="form-group">
+                {{-- <div class="form-group">
                   <label for="image">Immagine copertina Opera</label>
                   <div class="custom-file">
                     <input type="file" name="image" class="custom-file-input @error('image') is-invalid @enderror" id="image">
@@ -62,17 +63,17 @@
                     </div>
                     @enderror
                  </div>
-                </div>
+                </div> --}}
 
 
-                <div class="form-group">
-                  <label for="content">Contenuto</label>
-                  <textarea class="form-control" id="content" name="content" rows="20" placeholder="Contenuto del Post">{{ old('content',$post->content) }}</textarea>
-                </div>
-                <button type="submit" class="btn btn-primary">Invia</button>
-            </form>
+        <div class="form-group">
+          <label for="content">Contenuto</label>
+          <textarea class="form-control" id="content" name="content" rows="20" placeholder="Contenuto del Post">{{ old('content',$post->content) }}</textarea>
         </div>
+        <button type="submit" class="btn btn-primary">Invia</button>
+      </form>
     </div>
+  </div>
 </div> 
 
 

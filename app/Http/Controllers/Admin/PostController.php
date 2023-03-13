@@ -11,6 +11,7 @@ use App\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Str;
 
+
 class PostController extends Controller
 {
     /**
@@ -20,8 +21,7 @@ class PostController extends Controller
      */
     public function index()
     {
-        $posts = Post::limit(50)->get();
-
+        $posts = Post::orderBy('created_at', 'desc')->limit(50)->get();
         return view('admin.posts.index', compact('posts'));
     }
 
@@ -30,13 +30,11 @@ class PostController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create(Request $request)
+    public function create()
     {
-        // $artists = $users;
-        $users = User::orderBy('name', 'asc')->get();
-        // $posts = Post::findOrFail();
+        // $users = User::orderBy('name', 'asc')->get();
         $categories = Category::orderBy('name','asc')->get();
-        return view('admin.posts.create', compact('categories','users'));
+        return view('admin.posts.create', compact('categories'));
     }
 
     /**
@@ -45,9 +43,10 @@ class PostController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request, Post $post)
+    public function store(Request $request)
     {
-        $post = Post::where('id', Auth::user()->id)->first();
+        // dd($request->file('image'));
+        // $img_path = Storage::put('images',$request->file('image'));
 
         $params = $request->validate([
             'title' => 'required|max:20|min:5',
@@ -60,14 +59,15 @@ class PostController extends Controller
 
         $params['slug'] = Post::getUniqueSlugFrom($params['title']);
 
-        // if (array_key_exists('image', $params)) {
-        //     $img_path = Storage::disk('images')->put('images', $params['image']);
-        //     $params['images'] = $img_path;
-        // }
-
+        
+        if (array_key_exists('image', $params)) {
+            $img_path = Storage::disk('public')->put('images', $params['image']);
+            $params['image'] = $img_path;
+            $post->image = $img_path;
+        }
+    
         $post = Post::create($params);
 
-        $post->save();
         return redirect()->route('admin.posts.show', $post);
     }
 
@@ -79,6 +79,7 @@ class PostController extends Controller
      */
     public function show(Post $post)
     {
+        // $post->load('category');
         return view('admin.posts.show', compact('post'));
     }
 
@@ -90,8 +91,6 @@ class PostController extends Controller
      */
     public function edit(Post $post)
     {
-        $data = $post;
-        // $posts = Post::where()->get();
         $categories = Category::orderBy('name', 'asc')->get();
         return view('admin.posts.edit', compact('categories', 'post'));
     }
@@ -115,32 +114,35 @@ class PostController extends Controller
             'user_id' => 'required|exists:users,id'
         ]);
 
-        if (array_key_exists('image', $params)) {
-            if ($post->image) {
-                Storage::delete($post->image);
-            }
 
-            $img_path = Storage::disk('public')->put('images', $request->file('image'));
-            $params['image'] = $img_path;
-            $post->image = $img_path;
-        }
-
-        if (array_key_exists('cv', $data)) {
-            if ($artist->cv) {
-                Storage::delete($artist->cv);
-            }
-            $img_path = Storage::disk('public')->put('cvs', $request->file('cv'));
-            $data['cv'] = $img_path;
-            $artist->cv = $img_path;
-        }
         
         if($params['title'] !== $post->title) {
             $params['slug'] = Post::getUniqueSlugFrom($params['title']);
         }
-
+        
         $post->update($params);
+        
+        // if (array_key_exists('image', $params)) {
+        //     if ($post->image) {
+        //         Storage::delete($post->image);
+        //     }
+            
+        //     $img_path = Storage::disk('public')->put('images', $request->file('image'));
+        //     $params['image'] = $img_path;
+        //     $post->image = $img_path;
+        // }
+        
+        // if (array_key_exists('cv', $data)) {
+        //     if ($artist->cv) {
+        //         Storage::delete($artist->cv);
+        //     }
+        //     $img_path = Storage::disk('public')->put('cvs', $request->file('cv'));
+        //     $data['cv'] = $img_path;
+        //     $artist->cv = $img_path;
+        // }
+        
 
-         return redirect()->route('admin.posts.show', $post);
+        return redirect()->route('admin.posts.show', $post);
         
      }
 
@@ -153,12 +155,13 @@ class PostController extends Controller
     public function destroy(Post $post)
     {
         $img = $post->image;
+
         $post->delete();
 
-        if($img && Storage::exists($img)) {
-            Storage::delete($img);
+        if($img && Storage::disk('images')->exists($img)) {
+            Storage::disk('images')->delete($img);
         }
 
-        return redirect()->route('admin.users.show', $artist);
+        return redirect()->route('admin.posts.index');
     }
 }

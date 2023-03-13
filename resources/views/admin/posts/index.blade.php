@@ -33,6 +33,18 @@
                         <div class="card-footer">
                             <small class="text-muted">Data creazione: {{ $post->created_at }}</small>
                         </div>
+
+                        {{-- <div class="col-4  text-left d-flex justify-content-end align-items-center">
+                            <a href="{{ route('admin.posts.show', $post) }}" type="button" class="btn btn-primary btn-sm">Vedi</a>
+
+                            <form action="{{ route('admin.posts.destroy', $post) }}" method="POST">
+
+                                @csrf
+                                @method('DELETE')
+                                
+                                <input type="submit" value="Elimina" class="btn btn-danger btn-sm">
+                            </form>
+                        </div> --}}
                     </div>  
                 </a>    
             </div>
@@ -82,7 +94,7 @@
                                     </div>
                                     
                                     <div class="col-4  text-left d-flex justify-content-end align-items-center">
-                                        <a href="{{ route('admin.posts.show', $post->id) }}" type="button" class="btn btn-primary btn-sm">Modifica</a>
+                                        <a href="{{ route('admin.posts.show', $post) }}" type="button" class="btn btn-primary btn-sm">Modifica</a>
 
                                         <form action="{{ route('admin.posts.destroy', $post) }}" method="POST">
 
